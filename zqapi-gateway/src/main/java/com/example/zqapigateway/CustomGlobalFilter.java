@@ -102,8 +102,17 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
             return handleInvokeError(exchange.getResponse());
         }
-        //5. 请求的模拟接口是否存在？
-        //6. **请求转发，调用模拟接口**
+        // 5. 请求转发，调用模拟接口
+        Mono<Void> filter = chain.filter(exchange);
+        ServerHttpResponse response = exchange.getResponse();
+        // 6. 响应日志
+        log.info("响应状态码：{}", response.getStatusCode());
+        if (response.getStatusCode() == HttpStatus.OK) {
+            // 7. 调用成功，接口调用次数+1
+        } else {
+            // 8. 调用失败，返回规范错误码
+            return handleInvokeError(response);
+        }
 
         //7. 响应日志
         //8. 调用成功，接口调用次数+1
