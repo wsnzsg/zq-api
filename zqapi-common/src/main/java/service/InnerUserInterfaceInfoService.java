@@ -15,12 +15,7 @@ public interface InnerUserInterfaceInfoService  {
 
 
 
-    /**
-     *
-     * @param userInterfaceInfo
-     * @param add
-     */
-    void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean add);
+
 
     /**
      * 调用接口统计

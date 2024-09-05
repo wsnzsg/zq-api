@@ -16,10 +16,5 @@ public interface InnerInterfaceInfoService   {
      * @return
      */
     InterfaceInfo getInterfaceInfo(String path,String method);
-    /**
-     *
-     * @param interfaceInfo
-     * @param add
-     */
-    void validInterfaceInfo(InterfaceInfo interfaceInfo, boolean add);
+   
 }
