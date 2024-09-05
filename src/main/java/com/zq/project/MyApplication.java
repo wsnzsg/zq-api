@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@MapperScan("com.yupi.project.mapper")
+@MapperScan("com.zq.project.mapper")
 @EnableDubbo
 public class MyApplication {
 
