@@ -3,7 +3,8 @@ package service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 
-import entity.model.entity.User;
+
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 
 /**
