@@ -64,6 +64,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
     private static final long FIVE_MINUTES = 5 * 60 * 1000L;
 
+    //接口信息的域名，本项目中的接口均为模拟接口，统一在interface服务中接口地址为
     private static final String INTERFACE_HOST = "http://localhost:8090";
 
     @Override
