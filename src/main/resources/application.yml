@@ -46,5 +46,5 @@ dubbo:
     address: nacos://localhost:8848
 zqapi:
   client:
-    access-key: zq
-    secret-key: abcdefgh
+    access-key: 6a483b3951f8848222338107681be63f
+    secret-key: 20bee516409efe9512971d76de4660ac

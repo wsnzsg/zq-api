@@ -126,9 +126,9 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
             return handleInvokeError(response);
         }
         // 五分钟内的请求有效
-        if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
-            return handleInvokeError(response);
-        }
+//        if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
+//            return handleInvokeError(response);
+//        }
         // 4. 请求的模拟接口是否存在
         InterfaceInfo invokeInterfaceInfo = null;
         try {
