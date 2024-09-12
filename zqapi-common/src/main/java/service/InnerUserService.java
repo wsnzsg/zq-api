@@ -1,5 +1,5 @@
 package service;
-
+import entity.model.entity.User;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -19,6 +19,6 @@ public interface InnerUserService  {
      * 去掉secretKey是因为secretKey不应作为公共参数传入，应该直接从数据库中获取
      * @return
      */
-    User getInvokeUser(String accessKey);
+        User getInvokeUser(String accessKey);
 
 }

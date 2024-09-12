@@ -14,7 +14,7 @@ import service.InnerInterfaceInfoService;
 import javax.annotation.Resource;
 
 /**
- * 内部接口服务实现类
+ * 内部接口服务实现类,今日bug，无法远程调用innerservie
  *
  */
 @DubboService

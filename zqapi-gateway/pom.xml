@@ -51,11 +51,7 @@
             <artifactId>zqapi-client-sdk</artifactId>
             <version>0.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>3.1.5</version>
-        </dependency>
+
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>zqapi-common</artifactId>

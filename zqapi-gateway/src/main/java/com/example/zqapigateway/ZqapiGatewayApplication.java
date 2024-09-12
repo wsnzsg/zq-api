@@ -1,5 +1,6 @@
 package com.example.zqapigateway;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class})
+@EnableDubbo
 public class ZqapiGatewayApplication {
 
     public static void main(String[] args) {

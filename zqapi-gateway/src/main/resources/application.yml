@@ -8,7 +8,7 @@ spring:
         - id: api_route
           uri: http://localhost:8123
           predicates:
-            - Path=/name/**
+            - Path=/api/name/**
 
 logging:
   level:

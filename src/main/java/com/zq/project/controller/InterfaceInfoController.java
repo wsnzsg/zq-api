@@ -2,6 +2,7 @@ package com.zq.project.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.zqapiclientsdk.Client.ZqApiClient;
 import com.google.gson.Gson;
 import com.zq.project.annotation.AuthCheck;
 
@@ -15,7 +16,7 @@ import com.zq.project.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.zq.project.model.enums.InterfaceInfoStatusEnum;
 import com.zq.project.service.InterfaceInfoService;
 import com.zq.project.service.UserService;
-import com.yupi.yuapiclientsdk.client.YuApiClient;
+
 
 import entity.model.entity.InterfaceInfo;
 import entity.model.entity.User;
@@ -44,7 +45,7 @@ public class InterfaceInfoController {
     private UserService userService;
 
     @Resource
-    private YuApiClient yuApiClient;
+    private ZqApiClient zqApiClient;
 
     // region 增删改查
 
@@ -222,9 +223,9 @@ public class InterfaceInfoController {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
         // 判断该接口是否可以调用
-        com.yupi.yuapiclientsdk.model.User user = new com.yupi.yuapiclientsdk.model.User();
-        user.setUsername("test");
-        String username = yuApiClient.getUsernameByPost(user);
+        com.example.zqapiclientsdk.Dto.User user = new com.example.zqapiclientsdk.Dto.User();
+        user.setName("TEST");;
+        String username = zqApiClient.getNameByPost(user);
         if (StringUtils.isBlank(username)) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
         }
@@ -290,10 +291,11 @@ public class InterfaceInfoController {
         User loginUser = userService.getLoginUser(request);
         String accessKey = loginUser.getAccessKey();
         String secretKey = loginUser.getSecretKey();
-        YuApiClient tempClient = new YuApiClient(accessKey, secretKey);
+
         Gson gson = new Gson();
-        com.yupi.yuapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.yupi.yuapiclientsdk.model.User.class);
-        String usernameByPost = tempClient.getUsernameByPost(user);
+        com.example.zqapiclientsdk.Dto.User user = gson.fromJson(userRequestParams, com.example.zqapiclientsdk.Dto.User.class);
+        ZqApiClient tempClient=new ZqApiClient(accessKey,secretKey);
+        String usernameByPost = tempClient.getNameByPost(user);//修改服务跑通
         return ResultUtils.success(usernameByPost);
     }
 

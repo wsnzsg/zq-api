@@ -4,7 +4,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yupi.project.mapper.UserInterfaceInfoMapper">
+<mapper namespace="com.zq.project.mapper.UserInterfaceInfoMapper">
 
     <resultMap id="BaseResultMap" type="entity.model.entity.UserInterfaceInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
@@ -18,15 +18,17 @@
             <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
     </resultMap>
 
-<!-- [加入学习圈](https://t.zsxq.com/0emozsIJh) 从 0 到 1 项目实战，经验拉满！10+ 原创项目手把手教程、1000+ 项目经验笔记、7 日项目提升训练营、60+ 编程经验分享直播-->
 
     <sql id="Base_Column_List">
         id,userId,interfaceInfoId,
         totalNum,leftNum,status,
         createTime,updateTime,isDelete
     </sql>
-    <select id="listTopInvokeInterfaceInfo" resultType="com.yupi.yuapicommon.model.entity.UserInterfaceInfo">
-        select interfaceInfoId, sum(totalNum) as totalNum from user_interface_info group by interfaceInfoId
-        order by totalNum desc limit #{limit};
+    <select id="listTopInvokeInterfaceInfo" resultType="entity.model.entity.UserInterfaceInfo">
+        SELECT interfaceInfoId AS id,
+               SUM(totalNum)    AS invoke_num
+        FROM zqapi.user_interface_info
+        GROUP BY interfaceInfoId
+        ORDER BY invoke_num DESC LIMIT #{limit}
     </select>
 </mapper>
