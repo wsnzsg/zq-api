@@ -4,6 +4,8 @@ server:
 spring:
   cloud:
     gateway:
+      default-filters:
+        - AddResponseHeader=source, zq
       routes:
         - id: api_route
           uri: http://localhost:8123
@@ -19,6 +21,8 @@ logging:
 dubbo:
   application:
     name: dubbo-api-platform-backend-provider
+    qos:
+      enable: false
   protocol:
     name: dubbo
     port: -1
