@@ -1,8 +1,9 @@
 package com.zq.project.service.impl.inner;
 
 import com.zq.project.service.UserInterfaceInfoService;
-import com.yupi.yuapicommon.service.InnerUserInterfaceInfoService;
+
 import org.apache.dubbo.config.annotation.DubboService;
+import service.InnerUserInterfaceInfoService;
 
 import javax.annotation.Resource;
 

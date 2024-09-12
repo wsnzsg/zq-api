@@ -1,6 +1,7 @@
 package com.zq.project.model.vo;
 
-import com.yupi.yuapicommon.model.entity.InterfaceInfo;
+
+import entity.model.entity.InterfaceInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
