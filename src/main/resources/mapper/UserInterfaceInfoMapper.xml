@@ -25,10 +25,10 @@
         createTime,updateTime,isDelete
     </sql>
     <select id="listTopInvokeInterfaceInfo" resultType="entity.model.entity.UserInterfaceInfo">
-        SELECT interfaceInfoId AS id,
-               SUM(totalNum)    AS invoke_num
+        SELECT interfaceInfoId ,
+               SUM(totalNum)    AS totalNum
         FROM zqapi.user_interface_info
         GROUP BY interfaceInfoId
-        ORDER BY invoke_num DESC LIMIT #{limit}
+        ORDER BY totalNum DESC LIMIT #{limit}
     </select>
 </mapper>

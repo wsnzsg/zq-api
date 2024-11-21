@@ -20,7 +20,7 @@ spring:
     port: 6379
     host: localhost
     password: 123456
-    database: 0
+    database: 1
 server:
   port: 7529
   servlet:

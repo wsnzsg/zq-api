@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -44,8 +45,11 @@ public class AnalysisController {
     public BaseResponse<List<InterfaceInfoVO>> listTopInvokeInterfaceInfo() {
         List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(3);
         Map<Long, List<UserInterfaceInfo>> interfaceInfoIdObjMap = userInterfaceInfoList.stream()
-                .collect(Collectors.groupingBy(UserInterfaceInfo::getInterfaceInfoId));
-        QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>();
+                .collect(Collectors.toMap(
+                        UserInterfaceInfo::getInterfaceInfoId,
+                        Collections::singletonList,
+                        (existing, replacement) -> existing
+                ));        QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("id", interfaceInfoIdObjMap.keySet());
         List<InterfaceInfo> list = interfaceInfoService.list(queryWrapper);
         if (CollectionUtils.isEmpty(list)) {
